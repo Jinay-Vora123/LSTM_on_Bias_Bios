@@ -1,3 +1,7 @@
+# import os
+# os.environ["TRANSFORMERS_NO_TF"] = "1"
+# os.environ["TRANSFORMERS_NO_FLAX"] = "1"
+
 import pandas as pd
 import numpy as np
 import torch
@@ -9,7 +13,7 @@ from aif360.algorithms.preprocessing import Reweighing
 from sklearn.model_selection import train_test_split
 from transformers import AutoTokenizer, AutoModel
 
-df = pd.read_csv(r"bias_bio.csv", index_col=[0])
+df = pd.read_csv(r"C:\Users\jinay\OneDrive\Documents\VSCodes\CERTIFAI-main\bias_bio.csv", index_col=[0])
 texts = df['hard_text'].astype(str).tolist()
 df = df.drop(columns="hard_text")
 sd = StandardDataset(df=df, label_name='gender', favorable_classes=[1], protected_attribute_names=['profession'], privileged_classes=[[df['profession'].value_counts().idxmax()]], categorical_features=[])
@@ -75,5 +79,5 @@ for epoch in range(5):
         optimizer.step()
         total_loss += loss.item()
     print(f"Epoch {epoch+1} loss: {total_loss/len(train_loader):.4f}")
-
-torch.save({'model_state_dict': model.state_dict(), 'tokenizer_name': 'bert-base-uncased'}, 'fair_lstm_gender_classifier.pth')
+    
+torch.save(model, 'fair_lstm_gender_classifier.pth')
