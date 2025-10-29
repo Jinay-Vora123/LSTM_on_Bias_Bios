@@ -20,7 +20,8 @@ This repository presents our research internship work on Fairness and Explainabi
 ````
 ## File Structure
 ````markdown
-`lstm.py` - Baseline LSTM training on tabularized bios (no `hard_text`). 
+`lstm.py` - Baseline LSTM training on tabularized bios (no `hard_text`).
+`Unfair_LSTM_Training_Accuracy.jpg` - The training accuracy of the BiLSTM model trained in "lstm.py". 
 `lstm_fair.ipynb` - Notebook analyzing fairness and accuracy of both models. 
 `lstm_preprocess.ipynb` - Prepares, embeds, and visualizes the Bias-in-Bios data. 
 `lstm_fairness.py` - Uses BERT + AIF360 reweighting to train a fair LSTM model. 
